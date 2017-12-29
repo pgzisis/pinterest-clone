@@ -1,11 +1,128 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+
+<head>
+  <title>
+    P-clone: Share awesome pictures!
+  </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+
+  <div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper blue darken-4 z-depth-1">
+        <div class="container">
+          <a href="#!" class="brand-logo">P-clone</a>
+          <a href="#" data-activates="mobile-demo" class="button-collapse">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+          </a>
+          <ul class="right hide-on-med-and-down">
+            <li>
+              <a href="#">
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+                Sign in
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <ul class="side-nav" id="mobile-demo">
+    <li>
+      <a href="#">
+        <i class="fa fa-twitter" aria-hidden="true"></i>
+        Sign in
+      </a>
+    </li>
+  </ul>
+
+  <div class="hero z-depth-5">
+    <h1 class="heroHeader center-align z-depth-1">Share awesome pictures!</h1>
+  </div>
+
+  <div class="userStories z-depth-1">
+    <div class="section">
+      <h2 class="header center-align">User Stories</h2>
+    </div>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col m6">
+            <ul>
+              <li class="flow-text">
+                <i class="fa fa-check-square" aria-hidden="true"></i>
+                As an unauthenticated user, I can login with Twitter.</li>
+              <li class="flow-text listSpacing">
+                <i class="fa fa-check-square" aria-hidden="true"></i>
+                As an authenticated user, I can link to images.</li>
+              <li class="flow-text listSpacing">
+                <i class="fa fa-check-square" aria-hidden="true"></i>
+                As an authenticated user, I can delete images that I've linked to.</li>
+            </ul>
+          </div>
+          <div class="col m6">
+            <ul>
+              <li class="flow-text">
+                <i class="fa fa-check-square" aria-hidden="true"></i>
+                As an authenticated user, I can see a Pinterest-style wall of all the images I've linked to.</li>
+              <li class="flow-text listSpacing">
+                <i class="fa fa-check-square" aria-hidden="true"></i>
+                As an unauthenticated user, I can browse other users' walls of images.</li>
+              <li class="flow-text listSpacing">
+                <i class="fa fa-check-square" aria-hidden="true"></i>
+                As an authenticated user, if I upload an image that is broken, it will be replaced by a placeholder image.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="visitUsers blue lighten-4 z-depth-1">
+    <div class="section">
+      <h1 class="header center-align">Visit Users' Walls</h1>
+    </div>
+    <div class="section">
+      <div class="container">
+        <div class="row center-align">
+          <div class="preloader-wrapper big active">
+            <div class="spinner-layer spinner-blue-only">
+              <div class="circle-clipper left">
+                <div class="circle"></div>
+              </div>
+              <div class="gap-patch">
+                <div class="circle"></div>
+              </div>
+              <div class="circle-clipper right">
+                <div class="circle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <footer class="page-footer blue darken-3">
+    <div class="container">
+      <div class="row">
+        <p class="flow-text center-align">A project made for freeCodeCamp</p>
+      </div>
+    </div>
+    <div class="footer-copyright blue darken-4 center-align">
+      <p class="center-align copyright">© 2018 Panagiotis Zisis</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <script src="/javascripts/index.js"></script>
+</body>
+
 </html>
