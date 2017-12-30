@@ -21,24 +21,55 @@
             <i class="fa fa-bars" aria-hidden="true"></i>
           </a>
           <ul class="right hide-on-med-and-down">
-            <li>
-              <a href="/auth/twitter">
-                <i class="fa fa-twitter" aria-hidden="true"></i>
-                Sign in
-              </a>
-            </li>
+            <% if (user) { %>
+              <li>
+                <a href="#" class="user">
+                  <img class="circle left userPhoto" src="<%= user.photo %>">
+                  <span class="right">
+                    <%= user.name %>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="/logout">Log out</a>
+              </li>
+            <% } else { %>
+              <li>
+                <a href="/auth/twitter">
+                  <i class="fa fa-twitter" aria-hidden="true"></i>
+                  Sign in
+                </a>
+              </li>
+            <% } %>
           </ul>
         </div>
       </div>
     </nav>
   </div>
   <ul class="side-nav" id="mobile-demo">
-    <li>
-      <a href="/auth/twitter">
-        <i class="fa fa-twitter" aria-hidden="true"></i>
-        Sign in
-      </a>
-    </li>
+    <% if (user) { %>
+      <li>
+        <a href="#" class="user">
+          <img class="circle userPhotoSide" src="<%= user.photo %>">
+          <span class="userSide">
+            <%= user.name %>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a href="/logout">
+          <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i>
+          <span>Log out</span>
+        </a>
+      </li>
+    <% } else { %>
+      <li>
+        <a href="/auth/twitter">
+          <i class="fa fa-twitter fa-lg" aria-hidden="true"></i>
+          Sign in
+        </a>
+      </li>
+    <% } %>
   </ul>
 
   <div class="hero z-depth-5">
