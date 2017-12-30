@@ -57,6 +57,7 @@ require("./routes/index")(app);
 require("./routes/auth")(app);
 require("./routes/authCallback")(app);
 require("./routes/logout")(app);
+require("./routes/wall")(app);
 
 app.use(function(req, res, next) {
   const err = new Error("Not Found");

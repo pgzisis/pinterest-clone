@@ -1,0 +1,9 @@
+{
+	"version": 3,
+	"file": "wall.css",
+	"sources": [
+		"wall.scss"
+	],
+	"names": [],
+	"mappings": "AAAA,AAAA,IAAI,CAAC;EACH,KAAK,EAAE,mBAAmB,GAC3B;;AAED,AAAA,WAAW,CAAC;EACV,KAAK,EAAE,kBAAkB;EACzB,YAAY,EAAE,YAAY,GAC3B;;AAED,AAAA,UAAU,CAAC;EACT,KAAK,EAAE,IAAI,GACZ"
+}

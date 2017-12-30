@@ -1,0 +1,27 @@
+.fa-twitter {
+  color: #00aced !important;
+  margin-right: 0 !important; }
+
+.user {
+  height: 64px; }
+
+.userPhoto {
+  position: relative;
+  top: 8px;
+  margin-right: 5px; }
+
+.userPhotoSide {
+  height: 40px;
+  position: relative;
+  top: 4px;
+  right: 12px; }
+
+.userSide {
+  position: relative;
+  bottom: 10px;
+  right: 10px; }
+
+.fa-sign-out {
+  margin-right: 0 !important; }
+
+/*# sourceMappingURL=navbar.css.map */
