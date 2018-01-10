@@ -2,18 +2,110 @@
 <html lang="en">
 
 <head>
-  <title>User's Wall</title>
+  <title>
+    <%= otherWall ? 'P-clone: ' + otherWall.name : 'P-clone: ' + user.name %>
+  </title>
   <% include ./partials/headContent %>
   <link rel='stylesheet' href='/stylesheets/wall.css' />
 </head>
 
 <body>
 
-  <% include ./partials/navbar %>
+  <main>
+
+    <% include ./partials/navbar %>
+
+    <div class="userHeader center-align" data-twitterid="<%= otherWall ? otherWall.twitterId : user.twitterId %>">
+      <% if (otherWall) { %>
+        <img class="responsive-img circle" src="<%= otherWall.photo %>" alt="user's photo">
+        <p class="flow-text userName"><%= otherWall.name %></p>
+      <% } else { %>
+        <img class="responsive-img circle" src="<%= user.photo %>" alt="user's photo">
+        <p class="flow-text userName">Your Wall</p>
+        <a class="waves-effect waves-light btn blue-grey darken-3 modal-trigger" href="#addModal">
+          <i class="fa fa-plus" aria-hidden="true"></i>
+          <span>add</span>
+        </a>
+
+        <div id="addModal" class="modal modal-fixed-footer">
+          <div class="modal-content">
+            <h4 class="modalHeader">Add a new picture!</h4>
+            <div class="divider"></div>
+            <div class="section">
+              <div class="container">
+                <div class="errorField"></div>
+                <div class="input-field">
+                  <i class="fa fa-header prefix" aria-hidden="true"></i>
+                  <input id="title" type="text" data-length="50">
+                  <label for="title">Title</label>
+                </div>
+                <div class="input-field">
+                  <i class="fa fa-link prefix" aria-hidden="true"></i>
+                  <input id="url" type="text">
+                  <label for="url">Picture URL</label>
+                </div>
+                <div class="pictureErrorField"></div>
+                <img class="addedPicture responsive-img" src="">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a href="javascript:void(0)" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+            <a href="javascript:void(0)" id="addPicture" class="modal-action waves-effect waves-green btn blue-grey darken-3">Confirm</a>
+          </div>
+        </div>
+      <% } %>
+    </div>
+
+    <div class="masonry">
+      <% if (otherWall && otherWall.pictures.length === 0) { %>
+        <h2>No items</h2>
+      <% } else if (otherWall && otherWall.pictures.length !== 0) { %>
+        <div class="section">
+          <div class="grid container">
+            <% otherWall.pictures.forEach(function(picture) { %>
+              <div class="grid-item card">
+                <div class="card-image">
+                  <img src="<%= picture.url %>">
+                </div>
+                <div class="card-content">
+                  <span class="card-title"><%= picture.title %></span>
+                </div>
+              </div>
+            <% }) %>
+          </div>
+        </div>
+      <% } else if (user && user.pictures.length === 0) { %>
+        <h2>No items</h2>
+      <% } else { %>
+        <div class="section">
+          <div class="grid container">
+            <% user.pictures.forEach(function(picture) { %>
+              <div class="grid-item card">
+                <div class="card-image">
+                  <img src="<%= picture.url %>">
+                  <a class="btn-floating halfway-fab waves-effect waves-light red" data-pictureid="<%= picture['_id'] %>">
+                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                  </a>
+                </div>
+                <div class="card-content">
+                  <span class="card-title"><%= picture.title %></span>
+                </div>
+              </div>
+            <% }) %>
+          </div>
+        </div>
+      <% } %>
+    </div>
+
+  </main>
 
   <% include ./partials/footer %>
   
   <% include ./partials/scripts %>
+  <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+  <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+  <script src="/javascripts/wall.js"></script>
 </body>
 
 </html>

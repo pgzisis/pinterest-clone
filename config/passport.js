@@ -6,11 +6,13 @@ module.exports = passport => {
   passport.serializeUser((user, done) => {
     done(null, user.id);
   });
+
   passport.deserializeUser((id, done) => {
     User.findById(id, (err, user) => {
       done(err, user);
     });
   });
+
   passport.use(
     new TwitterStrategy(
       {
@@ -25,11 +27,13 @@ module.exports = passport => {
             if (user) {
               return done(null, user);
             }
+
             const newUser = new User();
             newUser.twitterId = profile.id;
             newUser.token = token;
             newUser.name = profile.displayName;
             newUser.photo = profile.photos[0].value;
+
             newUser.save(err => {
               if (err) throw err;
               return done(null, newUser);

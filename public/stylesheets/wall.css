@@ -1,11 +1,22 @@
 body {
-  color: rgba(0, 0, 0, 0.85); }
+  color: rgba(0, 0, 0, 0.85);
+  background-color: #cfd8dc;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column; }
 
-.fa-twitter {
-  color: #00aced !important;
-  margin-right: 0 !important; }
+main {
+  flex: 1 0 auto; }
 
-.copyright {
-  width: 100%; }
+.userHeader {
+  margin: 50px 0; }
+
+.userName {
+  margin: 0; }
+
+.grid-item {
+  width: 200px;
+  margin-right: 10px;
+  margin-bottom: 5px; }
 
 /*# sourceMappingURL=wall.css.map */
