@@ -52,6 +52,7 @@ module.exports = app => {
     );
   });
 
+  // adding a new picture
   app.post("/wall/:id", (req, res) => {
     const id = req.params.id;
     const picture = req.body;
@@ -82,6 +83,23 @@ module.exports = app => {
       res.json({
         success: true
       });
+    });
+  });
+
+  // delete a picture
+  app.delete("/wall/:id", (req, res) => {
+    const twitterid = req.params.id;
+    const pictureid = req.body.id;
+
+    User.findOne({ twitterId: twitterid }, (err, user) => {
+      if (err) throw err;
+      if (user) {
+        user.pictures.pull({ _id: pictureid });
+        user.save();
+        res.json({
+          success: true
+        });
+      }
     });
   });
 };

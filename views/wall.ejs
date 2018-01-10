@@ -59,7 +59,7 @@
 
     <div class="masonry">
       <% if (otherWall && otherWall.pictures.length === 0) { %>
-        <h2>No items</h2>
+        <h4 class="center-align">No pictures added yet</h4>
       <% } else if (otherWall && otherWall.pictures.length !== 0) { %>
         <div class="section">
           <div class="grid container">
@@ -76,7 +76,7 @@
           </div>
         </div>
       <% } else if (user && user.pictures.length === 0) { %>
-        <h2>No items</h2>
+        <h4 class="center-align">No pictures added yet</h4>
       <% } else { %>
         <div class="section">
           <div class="grid container">
@@ -84,7 +84,7 @@
               <div class="grid-item card">
                 <div class="card-image">
                   <img src="<%= picture.url %>">
-                  <a class="btn-floating halfway-fab waves-effect waves-light red" data-pictureid="<%= picture['_id'] %>">
+                  <a class="btn-floating halfway-fab waves-effect waves-light red deletePicture" data-pictureid="<%= picture['_id'] %>">
                     <i class="fa fa-trash-o" aria-hidden="true"></i>
                   </a>
                 </div>

@@ -1,15 +1,18 @@
 $(document).ready(function() {
   // initializations
   $(".button-collapse").sideNav();
+  initializeMasonry();
 
-  var $grid = $(".grid").imagesLoaded(function() {
-    // init Masonry after all images have loaded
-    $grid.masonry({
-      // options...
-      itemSelector: ".grid-item",
-      columnWidth: ".grid-item"
+  function initializeMasonry() {
+    var $grid = $(".grid").imagesLoaded(function() {
+      // init Masonry after all images have loaded
+      $grid.masonry({
+        // options...
+        itemSelector: ".grid-item",
+        columnWidth: ".grid-item"
+      });
     });
-  });
+  }
 
   function modalReset() {
     $(".errorField").html("");
@@ -69,22 +72,21 @@ $(document).ready(function() {
       });
     } else {
       $(".errorField").html("");
-      var data = {
+      var sentData = {
         title: $("#title").val(),
         url: $("#url").val()
       };
 
       // adding a new picture
       $.ajax({
-        type: "POST",
-        data: JSON.stringify(data),
+        method: "POST",
+        data: JSON.stringify(sentData),
         contentType: "application/json",
         url: "http://localhost:3000/wall/" + $(".userHeader").data("twitterid"),
         success: function(data) {
           if (data.success) {
             $(".pictureErrorField").html("");
-            console.log("success"); // waiting for db maintenance to finish
-            $(".modal").modal("close");
+            location.reload(true);
           } else {
             $(".pictureErrorField").html("");
             $(".pictureErrorField").append(
@@ -94,5 +96,22 @@ $(document).ready(function() {
         }
       });
     }
+  });
+
+  // deleting a picture
+  $(".deletePicture").click(function() {
+    var pictureid = $(this).data("pictureid");
+    var data = { id: pictureid };
+    $.ajax({
+      method: "DELETE",
+      data: JSON.stringify(data),
+      contentType: "application/json",
+      url: "http://localhost:3000/wall/" + $(".userHeader").data("twitterid"),
+      success: function(data) {
+        if (data.success) {
+          location.reload(true);
+        }
+      }
+    });
   });
 });
