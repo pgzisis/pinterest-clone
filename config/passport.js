@@ -18,7 +18,8 @@ module.exports = passport => {
       {
         consumerKey: process.env.CONSUMER_KEY,
         consumerSecret: process.env.CONSUMER_SECRET,
-        callbackURL: "http://localhost:3000/auth/twitter/callback"
+        callbackURL:
+          "https://hidden-plains-14482.herokuapp.com/auth/twitter/callback"
       },
       (token, tokenSecret, profile, done) => {
         process.nextTick(() => {

@@ -1,8 +1,17 @@
+const User = require("../models/users");
+
 module.exports = app => {
   app.get("/", (req, res) => {
-    if (req.user) {
-      return res.render("index", { user: req.user });
-    }
-    res.render("index", { user: false });
+    User.find((err, users) => {
+      if (err) throw err;
+
+      if (users && req.user) {
+        res.render("index", { user: req.user, users: users });
+      } else if (users && !req.user) {
+        res.render("index", { user: false, users: users });
+      } else {
+        res.render("index", { user: false, users: false });
+      }
+    });
   });
 };

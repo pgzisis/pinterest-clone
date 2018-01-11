@@ -11,7 +11,6 @@ const passport = require("passport");
 const MongoStore = require("connect-mongo")(session);
 const helmet = require("helmet");
 const compression = require("compression");
-require("dotenv").config();
 
 const app = express();
 

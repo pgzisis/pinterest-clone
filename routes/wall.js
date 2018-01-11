@@ -22,7 +22,6 @@ module.exports = app => {
         (err, user) => {
           if (err) throw err;
           if (user) {
-            console.log(user);
             return res.render("wall", {
               user: req.user,
               otherWall: user
@@ -41,7 +40,6 @@ module.exports = app => {
       (err, user) => {
         if (err) throw err;
         if (user) {
-          console.log(user);
           return res.render("wall", {
             user: false,
             otherWall: user

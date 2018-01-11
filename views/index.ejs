@@ -16,7 +16,7 @@
     <% include ./partials/navbar %>
 
     <div class="hero z-depth-5">
-      <h1 class="heroHeader center-align z-depth-1">Share awesome pictures!</h1>
+      <h1 class="heroHeader center-align z-depth-1 flow-text">Share awesome pictures!</h1>
     </div>
 
     <div class="userStories z-depth-1">
@@ -63,19 +63,19 @@
       </div>
       <div class="section">
         <div class="container">
-          <div class="row center-align">
-            <div class="preloader-wrapper big active">
-              <div class="spinner-layer spinner-blue-only">
-                <div class="circle-clipper left">
-                  <div class="circle"></div>
-                </div>
-                <div class="gap-patch">
-                  <div class="circle"></div>
-                </div>
-                <div class="circle-clipper right">
-                  <div class="circle"></div>
-                </div>
-              </div>
+          <div class="row">
+            <div class="input-field col s12 m6 offset-m3">
+              <select class="icons">
+                <% if (!users || users.length === 0) { %>
+                  <option value="" disabled selected>No users yet</option>
+                <% } else { %>
+                  <option value="" disabled selected>Pick a user</option>
+                  <% users.forEach(function(user) { %>
+                    <option value="<%= user.twitterId %>" data-icon="<%= user.photo %>" class="left circle"><%= user.name %></option>
+                  <% }) %>
+                <% } %>
+              </select>
+              <label>All users of P-clone</label>
             </div>
           </div>
         </div>

@@ -3,6 +3,13 @@ $(document).ready(function() {
   $(".button-collapse").sideNav();
   initializeMasonry();
 
+  $("img").on("error", function() {
+    $(this).attr(
+      "src",
+      "http://via.placeholder.com/300x200?text=Picture+not+found!"
+    );
+  });
+
   function initializeMasonry() {
     var $grid = $(".grid").imagesLoaded(function() {
       // init Masonry after all images have loaded
@@ -35,13 +42,6 @@ $(document).ready(function() {
   // Modal validation
   $("#url").change(function() {
     $(".addedPicture").attr("src", $("#url").val());
-
-    $(".addedPicture").on("error", function() {
-      $(this).attr(
-        "src",
-        "http://via.placeholder.com/300x200?text=Picture+not+found!"
-      );
-    });
   });
 
   $("#addPicture").click(function() {
@@ -82,7 +82,9 @@ $(document).ready(function() {
         method: "POST",
         data: JSON.stringify(sentData),
         contentType: "application/json",
-        url: "http://localhost:3000/wall/" + $(".userHeader").data("twitterid"),
+        url:
+          "https://hidden-plains-14482.herokuapp.com/wall/" +
+          $(".userHeader").data("twitterid"),
         success: function(data) {
           if (data.success) {
             $(".pictureErrorField").html("");
@@ -106,7 +108,9 @@ $(document).ready(function() {
       method: "DELETE",
       data: JSON.stringify(data),
       contentType: "application/json",
-      url: "http://localhost:3000/wall/" + $(".userHeader").data("twitterid"),
+      url:
+        "https://hidden-plains-14482.herokuapp.com/wall/" +
+        $(".userHeader").data("twitterid"),
       success: function(data) {
         if (data.success) {
           location.reload(true);
