@@ -12,9 +12,26 @@ module.exports = app => {
           otherWall: false
         });
         res.redirect("/");
+      } else {
+        // user is logged in and it's another user's wall
+        User.findOne(
+          {
+            twitterId: id
+          },
+          (err, user) => {
+            if (err) throw err;
+            if (user) {
+              return res.render("wall", {
+                user: req.user,
+                otherWall: user
+              });
+            }
+            res.redirect("/");
+          }
+        );
       }
-
-      // user is logged in and it's another user's wall
+    } else {
+      // visitor at another user's wall
       User.findOne(
         {
           twitterId: id
@@ -23,7 +40,7 @@ module.exports = app => {
           if (err) throw err;
           if (user) {
             return res.render("wall", {
-              user: req.user,
+              user: false,
               otherWall: user
             });
           }
@@ -31,23 +48,6 @@ module.exports = app => {
         }
       );
     }
-
-    // visitor at another user's wall
-    User.findOne(
-      {
-        twitterId: id
-      },
-      (err, user) => {
-        if (err) throw err;
-        if (user) {
-          return res.render("wall", {
-            user: false,
-            otherWall: user
-          });
-        }
-        res.redirect("/");
-      }
-    );
   });
 
   // adding a new picture
